@@ -16,47 +16,104 @@ export const quizData = {
   // the questions in the quiz
   questions: [
     {
-      text: 'What are the different ways to declare a JS variable?',
+      text: 'What is the default value of the position property??',
       answers: {
-        a: 'constant, let, variable',
-        b: 'var, const, let, function',
-        c: 'var, let, const',
+        a: 'fixed',
+        b: 'relative',
+        c: 'absolute',
+        d: 'static',
       },
-      correct: 'c',
-      selected: null,
-      links: [
-        {
-          text: 'javascript.info',
-          href: 'https://javascript.info/variables',
-        },
-        {
-          text: 'Tyler McGinnis',
-          href: 'https://ui.dev/var-let-const/',
-        },
-      ],
+      correctAnswer: 'd',
     },
     {
-      text: 'What does `typeof` do?',
+      text: 'How do you group selectors?',
       answers: {
-        a: 'changes the type of a primitive value',
-        b: 'returns a string describing the type of a value',
-        c: 'determines if a value is primitive',
-        d: 'can tell the difference between arrays and objects',
+        a: 'Separate each selector with a plus sign',
+        b: 'Separate each selector with a comma',
+        c: 'Separate each selector with a space',
+        d: 'Separate each selector with dash',
       },
-      correct: 'b',
-      selected: null,
-      links: [
-        {
-          text: 'javascript.info',
-          href: 'https://javascript.info/types#type-typeof',
-        },
-        {
-          text: 'MDN',
-          href:
-            'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof',
-        },
-      ],
+      correctAnswer: 'c',
     },
-    // Add more questions here
+    {
+      text: 'How do you select all p elements inside a div element?',
+      answers: {
+        a: 'div p',
+        b: 'div + p',
+        c: 'div.p',
+        d: 'div, p',
+      },
+      correctAnswer: 'a',
+    },
+    {
+      text: 'How do you make a list that lists its items with squares?',
+      answers: {
+        a: 'list-type: square',
+        b: 'list-style-type: square',
+        c: 'list: square',
+        d: 'Non of the above',
+      },
+      correctAnswer: 'b',
+    },
+    {
+      text: 'Which is the correct CSS syntax?',
+      answers: {
+        a: '{body;color:black;}',
+        b: 'body:color=black;',
+        c: 'body {color: black;}',
+        d: '{body:color=black;}',
+      },
+      correctAnswer: 'c',
+    },
+    {
+      text: 'How do you make the text bold?',
+      answers: {
+        a: 'style:bold',
+        b: 'font:bold',
+        c: 'font-weight:bold',
+        d: 'style-font: bold',
+      },
+      correctAnswer: 'c',
+    },
+    {
+      text: 'Which property is used to change the font of an element?',
+      answers: {
+        a: 'font-family',
+        b: 'font-weight',
+        c: 'font-style',
+        d: 'font-text',
+      },
+      correctAnswer: 'a',
+    },
+    {
+      text: 'How do you make each word in a text start with a capital letter?',
+      answers: {
+        a: 'You cannot do that with CSS',
+        b: 'transform:capitalize',
+        c: 'text-transform:capitalize',
+        d: 'text-style:capitalize',
+      },
+      correctAnswer: 'c',
+    },
+    {
+      text: 'Which HTML attribute is used to define inline styles?',
+      answers: {
+        a: 'style',
+        b: 'class',
+        c: 'styles',
+        d: 'src',
+      },
+      correctAnswer: 'a',
+    },
+    {
+      text: 'What does CSS stand for?',
+      answers: {
+        a: 'Creative Style Sheets',
+        b: 'Cascading Style Sheets',
+        c: 'Computer Style Sheets',
+        d: 'Colorful Style Sheets',
+      },
+      correctAnswer: 'b',
+    },
   ],
 };
