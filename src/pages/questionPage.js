@@ -24,8 +24,16 @@ export const initQuestionPage = () => {
   for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
     const answerElement = createAnswerElement(key, answerText);
     answersListElement.appendChild(answerElement);
+    // making question clickable
+    answerElement.addEventListener('click', function () {
+      currentQuestion.selected = key;
+      if (key == currentQuestion.correct) {
+        answerElement.style.color = 'green';
+      } else if (key) {
+        answerElement.style.color = 'red';
+      }
+    });
   }
-
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
     .addEventListener('click', nextQuestion);
