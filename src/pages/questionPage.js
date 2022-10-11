@@ -33,6 +33,7 @@ export const initQuestionPage = () => {
         answerElement.style.color = 'red';
       }
     });
+    
   }
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
