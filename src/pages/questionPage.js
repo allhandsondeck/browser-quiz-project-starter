@@ -28,6 +28,18 @@ export const initQuestionPage = () => {
   for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
     const answerElement = createAnswerElement(key, answerText);
     answersListElement.appendChild(answerElement);
+
+    // making answers clickable
+    answerElement.addEventListener('click', function () {
+      const correctAnswer = currentQuestion.correctAnswer;
+      currentQuestion.selected = key;
+
+      if (key == correctAnswer) {
+        answerElement.classList.add('green');
+      } else {
+        answerElement.classList.add('red');
+      }
+    });
   }
   initQuestionProgress(); 
   document
