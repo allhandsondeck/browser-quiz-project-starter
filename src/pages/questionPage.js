@@ -34,14 +34,15 @@ export const initQuestionPage = () => {
 
 const nextQuestion = () => {
   quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
-
+  clearInterval(countdownInterval);
   initQuestionPage();
   countdownNextPage();
 };
 
+let countdownInterval;
 export const countdownNextPage = () => {
   let counter = 15;
-  setInterval(function () {
+  countdownInterval = setInterval(function () {
   let id = document.getElementById(COUNTDOWN_TIME_ID);
   if (counter > 0) {
     id.innerHTML = `Last ${counter} seconds for the question!`;
