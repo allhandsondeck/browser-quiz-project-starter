@@ -10,6 +10,7 @@ import { createAnswerElement } from '../views/answerView.js';
 import { quizData } from '../data.js';
 import { initCounter } from '../views/countdownView.js';
 import { countdownInterval } from '../views/countdownView.js';
+import { resultPage } from '../pages/resultPage.js';
 
 export const initQuestionPage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
@@ -36,6 +37,10 @@ export const initQuestionPage = () => {
 const nextQuestion = () => {
   quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
   clearInterval(countdownInterval);
+  if(quizData.currentQuestionIndex>=quizData.questions.length){
+    resultPage();
+  } else {
   initQuestionPage();
   initCounter();
+}
 };
