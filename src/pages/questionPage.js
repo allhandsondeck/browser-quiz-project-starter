@@ -4,11 +4,12 @@ import {
   ANSWERS_LIST_ID,
   NEXT_QUESTION_BUTTON_ID,
   USER_INTERFACE_ID,
-  COUNTDOWN_TIME_ID,
 } from '../constants.js';
 import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
 import { quizData } from '../data.js';
+import { initCounter } from '../views/countdownView.js';
+import { countdownInterval } from '../views/countdownView.js';
 
 export const initQuestionPage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
@@ -36,20 +37,5 @@ const nextQuestion = () => {
   quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
   clearInterval(countdownInterval);
   initQuestionPage();
-  countdownNextPage();
+  initCounter();
 };
-
-let countdownInterval;
-export const countdownNextPage = () => {
-  let counter = 15;
-  countdownInterval = setInterval(function () {
-  let id = document.getElementById(COUNTDOWN_TIME_ID);
-  if (counter > 0) {
-    id.innerHTML = `Last ${counter} seconds for the question!`;
-  }
-  else if (counter === 0) {
-    id.innerHTML = 'Times Up!';
-  }
-  counter--;
-  }, 1000);
-}
