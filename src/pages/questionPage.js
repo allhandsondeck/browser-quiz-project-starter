@@ -25,19 +25,33 @@ export const initQuestionPage = () => {
 
   const answersListElement = document.getElementById(ANSWERS_LIST_ID);
 
-  for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
-    const answerElement = createAnswerElement(key, answerText);
+  for (const [answerLetter, answerText] of Object.entries(currentQuestion.answers)) {
+    const answerElement = createAnswerElement(answerLetter, answerText);
     answersListElement.appendChild(answerElement);
 
     // making answers clickable
     answerElement.addEventListener('click', function () {
       const correctAnswer = currentQuestion.correctAnswer;
-      currentQuestion.selected = key;
+      currentQuestion.selected = answerLetter;
 
-      if (key == correctAnswer) {
+      if (answerLetter == correctAnswer) {
+        Array.from(answersListElement.children).forEach((element) => {
+          element.classList.remove('red');
+        });
         answerElement.classList.add('green');
       } else {
+        //should highligh the correct answer green NOT WORKING
+        Array.from(answersListElement.children).find((child) => {
+          //child.innerHTML.charAt(0) should return the first letter of a string which supposed to be the answerLetter
+          (child.innerHTML.charAt(0) == correctAnswer).classList.add('green');
+        });  
+
+         //only one wrong answer highlighted in red
+        Array.from(answersListElement.children).forEach((element) => {
+          element.classList.remove('red');
+        });
         answerElement.classList.add('red');
+        
       }
     });
   }
