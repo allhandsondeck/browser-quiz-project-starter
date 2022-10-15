@@ -5,6 +5,7 @@ import {
   COUNTER_ID,
   NEXT_QUESTION_BUTTON_ID,
   PROGRESS_ID,
+  QUESTION_H1_CLASS,
 } from '../constants.js';
 
 /**
@@ -18,7 +19,7 @@ export const createQuestionElement = (question) => {
   element.innerHTML = String.raw`
     <p id="${COUNTER_ID}"></p>
     <p id="${PROGRESS_ID}"></p>
-    <h1>${question}</h1>
+    <h1 class="${QUESTION_H1_CLASS}">${question}</h1>
 
     <ul id="${ANSWERS_LIST_ID}">
     </ul>
