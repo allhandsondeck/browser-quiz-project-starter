@@ -15,3 +15,4 @@ export const COUNTER_ID = 'countdown-time';
 export const RESTART_QUIZ_BUTTON_ID = 'restart-quiz-button';
 export const PROGRESS_ID = 'progress';
 export const QUESTION_H1_CLASS = 'question-h1';
+export const CORRECT_ANSWER_RATE_ID = 'correct-answer-rate-id';

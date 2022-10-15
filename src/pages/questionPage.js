@@ -2,6 +2,7 @@
 
 import {
   ANSWERS_LIST_ID,
+  CORRECT_ANSWER_RATE_ID,
   NEXT_QUESTION_BUTTON_ID,
   USER_INTERFACE_ID,
 } from '../constants.js';
@@ -12,6 +13,9 @@ import { initCounter } from '../views/countdownView.js';
 import { countdownInterval } from '../views/countdownView.js';
 import { resultPage } from '../pages/resultPage.js';
 import { initQuestionProgress } from '../views/progressView.js';
+
+let correctAnswerCount = 0;
+let isCurrentAnswerCorrect = false;
 
 export const initQuestionPage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
@@ -24,6 +28,9 @@ export const initQuestionPage = () => {
   userInterface.appendChild(questionElement);
 
   const answersListElement = document.getElementById(ANSWERS_LIST_ID);
+  const correctAnswerCountElement = document.getElementById(CORRECT_ANSWER_RATE_ID);
+
+  userInterface.appendChild(correctAnswerCountElement);
 
   for (const [answerLetter, answerText] of Object.entries(currentQuestion.answers)) {
     const answerElement = createAnswerElement(answerLetter, answerText);
@@ -37,8 +44,10 @@ export const initQuestionPage = () => {
       if (answerLetter == correctAnswer) {
         Array.from(answersListElement.children).forEach((element) => {
           element.classList.remove('red');
+          
         });
         answerElement.classList.add('green');
+        isCurrentAnswerCorrect = true;
       } else {
         Array.from(answersListElement.children)
           .find((child) => child.innerText.charAt(0) == correctAnswer)
@@ -47,7 +56,7 @@ export const initQuestionPage = () => {
           element.classList.remove('red');
         });
         answerElement.classList.add('red');
-        
+        isCurrentAnswerCorrect = false;
       }
     });
   }
@@ -57,13 +66,21 @@ export const initQuestionPage = () => {
     .addEventListener('click', nextQuestion);
 };
 
-const nextQuestion = () => {
+export const nextQuestion = () => {
   quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
   clearInterval(countdownInterval);
+  if(isCurrentAnswerCorrect){
+    correctAnswerCount++;
+    const correctAnswerCountElement = document.getElementById(CORRECT_ANSWER_RATE_ID);
+    console.log(correctAnswerCount);
+    correctAnswerCountElement.innerText = correctAnswerCount;
+
+  }
   if(quizData.currentQuestionIndex>=quizData.questions.length){
     resultPage();
   } else {
   initQuestionPage();
   initCounter();
+
 }
 };

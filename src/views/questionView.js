@@ -2,6 +2,7 @@
 
 import {
   ANSWERS_LIST_ID,
+  CORRECT_ANSWER_RATE_ID,
   COUNTER_ID,
   NEXT_QUESTION_BUTTON_ID,
   PROGRESS_ID,
@@ -17,6 +18,7 @@ export const createQuestionElement = (question) => {
 
   // I use String.raw just to get fancy colors for the HTML in VS Code.
   element.innerHTML = String.raw`
+    <p id="${CORRECT_ANSWER_RATE_ID}"></p>
     <p id="${COUNTER_ID}"></p>
     <p id="${PROGRESS_ID}"></p>
     <h1 class="${QUESTION_H1_CLASS}">${question}</h1>

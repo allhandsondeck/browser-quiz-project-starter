@@ -1,4 +1,5 @@
 import { COUNTER_ID } from '../constants.js';
+import { nextQuestion } from '../pages/questionPage.js';
 
 export let countdownInterval;
 export const initCounter = () => {
@@ -10,6 +11,7 @@ export const initCounter = () => {
   }
   else if (counter === 0) {
     id.innerHTML = 'Times Up!';
+    setTimeout(nextQuestion, 1000)
   }
   counter--;
   }, 1000);
