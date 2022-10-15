@@ -1,12 +1,10 @@
 'use strict';
 
-import { RESTART_QUIZ_BUTTON_ID } from '../constants.js';
-
-export const createResultElement = () => {
+export const createResultElement = (correctAnswerCount) => {
     const element = document.createElement('div');
     element.innerHTML = String.raw`
       <p class="result-paragraph">Thank you! You have completed this quiz!</p>
-      <button id="${RESTART_QUIZ_BUTTON_ID}">Restart Quiz</button>
+      <p class="result-score">You've answered ${correctAnswerCount} out of 10 questions</p>
     `;
     return element;
   };
