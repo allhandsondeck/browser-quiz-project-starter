@@ -27,11 +27,3 @@ jobs:
         with:
           commit_message: installing
           branch: ${{ github.head_ref }}
-
-      - run: npm run test-ci
-        env:
-          CI: true
-      - uses: stefanzweifel/git-auto-commit-action@v4.7.2
-        with:
-          commit_message: testing
-          branch: ${{ github.head_ref }}
