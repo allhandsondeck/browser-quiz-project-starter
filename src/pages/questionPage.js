@@ -14,6 +14,7 @@ import { initCounter } from '../views/countdownView.js';
 import { countdownInterval } from '../views/countdownView.js';
 import { resultPage } from '../pages/resultPage.js';
 import { initQuestionProgress } from '../views/progressView.js';
+import { createCorrectAnswerViewElement } from '../views/correctAnswerCountView.js';
 
 let correctAnswerCount = 0;
 let isCurrentAnswerCorrect = false;
@@ -26,17 +27,21 @@ export const initQuestionPage = (correctAnswerCount) => {
 
   const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
 
+
   const questionElement = createQuestionElement(currentQuestion.text);
 
   userInterface.appendChild(questionElement);
 
-  const answersListElement = document.getElementById(ANSWERS_LIST_ID);
-
+  const correctAnswerElement = createCorrectAnswerViewElement();
+  userInterface.appendChild(correctAnswerElement);
   const correctAnswerCountElement = document.getElementById(
     CORRECT_ANSWER_RATE_ID
   );
-  correctAnswerCountElement.innerText = correctAnswerCount;
-  userInterface.appendChild(correctAnswerCountElement);
+  correctAnswerCountElement.innerText = `Correct answer: ${correctAnswerCount}`;
+
+  const answersListElement = document.getElementById(ANSWERS_LIST_ID);
+
+
 
   for (const [answerLetter, answerText] of Object.entries(
     currentQuestion.answers
@@ -86,7 +91,7 @@ export const nextQuestion = () => {
     correctAnswerCount++;
   }
   if (quizData.currentQuestionIndex >= quizData.questions.length) {
-    resultPage();
+    resultPage(correctAnswerCount);
   } else {
     initQuestionPage(correctAnswerCount);
     initCounter();
