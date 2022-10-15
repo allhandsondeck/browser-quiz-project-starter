@@ -80,4 +80,57 @@ body {
 
 #answers-list{
   list-style: none;
+  margin: 10px auto;
+  padding-left: 0px;
+}
+
+#answers-list li{
+  background-color: #112D4E;
+  border-color: #112D4E;
+  color: #F9F7F7;
+  text-align: left;
+  margin: 10px auto;
+  border-radius: 10px;
+  padding: 0px 20px;
+  line-height: 3em;
+  width:500px;
+}
+
+#answers-list li:hover{
+  background-color: #3F72AF;
+  border-color: #3F72AF;
+  color: #F9F7F7;
+  text-align: left;
+  margin: 10px auto;
+  border-radius: 10px;
+  padding: 0px 20px;
+  line-height: 3em;
+  width:500px;
+  cursor: pointer;
+}
+
+#next-question-button{
+  background-color: #9ca3af;
+  border-color: #9ca3af;
+  color: black;
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 10px 15px;
+  margin-top: 30px;
+}
+
+#next-question-button:hover{
+  background-color: #4b5563;
+  border-color: #4b5563;
+  color: #f8fafc;
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 10px 15px;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+.question-h1{
+  color: #112D4E;
+  margin-bottom: 40px;
 }

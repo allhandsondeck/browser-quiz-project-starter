@@ -11,6 +11,10 @@ export const USER_INTERFACE_ID = 'user-interface';
 export const START_QUIZ_BUTTON_ID = 'start-quiz-button';
 export const ANSWERS_LIST_ID = 'answers-list';
 export const NEXT_QUESTION_BUTTON_ID = 'next-question-button';
+<<<<<<< HEAD
 export const COUNTER_ID = 'countdown-time';
 export const RESTART_QUIZ_BUTTON_ID = 'restart-quiz-button';
 export const PROGRESS_ID = 'progress';
+=======
+export const QUESTION_H1_CLASS = 'question-h1';
+>>>>>>> c7ed5ed (Finish question page style)
