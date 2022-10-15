@@ -134,3 +134,11 @@ body {
   color: #112D4E;
   margin-bottom: 40px;
 }
+
+#progress{
+  color: #112D4E;
+}
+
+#countdown-time {
+  color: #AA4A44;
+}
