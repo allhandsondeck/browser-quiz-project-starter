@@ -17,7 +17,8 @@ import { initQuestionProgress } from '../views/progressView.js';
 let correctAnswerCount = 0;
 let isCurrentAnswerCorrect = false;
 
-export const initQuestionPage = () => {
+export const initQuestionPage = (correctAnswerCount) => {
+  correctAnswerCount = correctAnswerCount ?? 0;
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
 
@@ -28,11 +29,16 @@ export const initQuestionPage = () => {
   userInterface.appendChild(questionElement);
 
   const answersListElement = document.getElementById(ANSWERS_LIST_ID);
-  const correctAnswerCountElement = document.getElementById(CORRECT_ANSWER_RATE_ID);
 
+  const correctAnswerCountElement = document.getElementById(
+    CORRECT_ANSWER_RATE_ID
+  );
+  correctAnswerCountElement.innerText = correctAnswerCount;
   userInterface.appendChild(correctAnswerCountElement);
 
-  for (const [answerLetter, answerText] of Object.entries(currentQuestion.answers)) {
+  for (const [answerLetter, answerText] of Object.entries(
+    currentQuestion.answers
+  )) {
     const answerElement = createAnswerElement(answerLetter, answerText);
     answersListElement.appendChild(answerElement);
 
@@ -44,7 +50,6 @@ export const initQuestionPage = () => {
       if (answerLetter == correctAnswer) {
         Array.from(answersListElement.children).forEach((element) => {
           element.classList.remove('red');
-          
         });
         answerElement.classList.add('green');
         isCurrentAnswerCorrect = true;
@@ -60,7 +65,7 @@ export const initQuestionPage = () => {
       }
     });
   }
-  initQuestionProgress(); 
+  initQuestionProgress();
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
     .addEventListener('click', nextQuestion);
@@ -69,18 +74,13 @@ export const initQuestionPage = () => {
 export const nextQuestion = () => {
   quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
   clearInterval(countdownInterval);
-  if(isCurrentAnswerCorrect){
+  if (isCurrentAnswerCorrect) {
     correctAnswerCount++;
-    const correctAnswerCountElement = document.getElementById(CORRECT_ANSWER_RATE_ID);
-    console.log(correctAnswerCount);
-    correctAnswerCountElement.innerText = correctAnswerCount;
-
   }
-  if(quizData.currentQuestionIndex>=quizData.questions.length){
+  if (quizData.currentQuestionIndex >= quizData.questions.length) {
     resultPage();
   } else {
-  initQuestionPage();
-  initCounter();
-
-}
+    initQuestionPage(correctAnswerCount);
+    initCounter();
+  }
 };
