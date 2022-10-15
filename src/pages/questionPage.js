@@ -18,6 +18,7 @@ let correctAnswerCount = 0;
 let isCurrentAnswerCorrect = false;
 
 export const initQuestionPage = (correctAnswerCount) => {
+  isCurrentAnswerCorrect = false;
   correctAnswerCount = correctAnswerCount ?? 0;
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
