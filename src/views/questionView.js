@@ -23,7 +23,7 @@ export const createQuestionElement = (question) => {
     <p id="${PROGRESS_ID}"></p>
     <h1 class="${QUESTION_H1_CLASS}">${question}</h1>
 
-    <ul id="${ANSWERS_LIST_ID}">
+    <ul id="${ANSWERS_LIST_ID}" class="answers-list">
     </ul>
 
     <button id="${NEXT_QUESTION_BUTTON_ID}">
