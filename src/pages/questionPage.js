@@ -40,13 +40,9 @@ export const initQuestionPage = () => {
         });
         answerElement.classList.add('green');
       } else {
-        //should highligh the correct answer green NOT WORKING
-        Array.from(answersListElement.children).find((child) => {
-          //child.innerHTML.charAt(0) should return the first letter of a string which supposed to be the answerLetter
-          (child.innerHTML.charAt(0) == correctAnswer).classList.add('green');
-        });  
-
-         //only one wrong answer highlighted in red
+        Array.from(answersListElement.children)
+          .find((child) => child.innerText.charAt(0) == correctAnswer)
+          .classList.add('green');
         Array.from(answersListElement.children).forEach((element) => {
           element.classList.remove('red');
         });
