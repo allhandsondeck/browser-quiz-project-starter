@@ -5,6 +5,7 @@ import {
   CORRECT_ANSWER_RATE_ID,
   NEXT_QUESTION_BUTTON_ID,
   USER_INTERFACE_ID,
+  COUNTER_ID,
 } from '../constants.js';
 import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
@@ -41,13 +42,19 @@ export const initQuestionPage = (correctAnswerCount) => {
     currentQuestion.answers
   )) {
     const answerElement = createAnswerElement(answerLetter, answerText);
+    answerElement.className = 'answer-list-item';
     answersListElement.appendChild(answerElement);
 
     // making answers clickable
     answerElement.addEventListener('click', function () {
       const correctAnswer = currentQuestion.correctAnswer;
       currentQuestion.selected = answerLetter;
-
+      clearInterval(countdownInterval);
+      const counter = document.getElementById(COUNTER_ID);
+      counter.classList.add('hidden');
+      Array.from(answersListElement.children).forEach((element) => {
+        element.classList.add('deactivated-answer');
+      })
       if (answerLetter == correctAnswer) {
         Array.from(answersListElement.children).forEach((element) => {
           element.classList.remove('red');
